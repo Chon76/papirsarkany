@@ -12,7 +12,7 @@ export function setSendgridApiKey() {
 export async function sendEmail(mailData: MailDataRequired) {
   await sgMail.send(mailData);
 
-  console.log(`Vendor email is sent to ${mailData.to}`);
+  console.log(`Email is sent to ${mailData.to}`);
 }
 
 export async function sendOrderEmails(order: Order, orderEmailData: OrderMail) {
