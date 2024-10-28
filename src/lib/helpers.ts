@@ -12,12 +12,12 @@ export function isProdEnv(): boolean {
 }
 
 /**
- * Stage environment is a preview environment with a pull request id
+ * Returns true if the vercel environment is a "stage" environment and PR is open for it.
  */
 export function isStageEnv(): boolean {
   return (
     process.env.NODE_ENV === 'production' &&
-    env.VERCEL_ENV === 'preview' &&
+    env.VERCEL_ENV === 'stage' &&
     Boolean(env.VERCEL_GIT_PULL_REQUEST_ID)
   );
 }

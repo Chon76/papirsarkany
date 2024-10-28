@@ -19,7 +19,9 @@ export const env = createEnv({
     GOOGLE_CLOUD_API_KEY: z.string(),
 
     // vercel system envs
-    VERCEL_ENV: z.enum(['preview', 'production', 'development']).optional(),
+    VERCEL_ENV: z
+      .enum(['preview', 'production', 'development', 'stage'])
+      .optional(),
     VERCEL_GIT_PULL_REQUEST_ID: z.string().optional(),
   },
   client: {
