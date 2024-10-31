@@ -3,7 +3,7 @@ import { devices, expect, test } from '@playwright/test';
 const iphone13 = devices['iPhone 13'];
 
 test('Mobile navigation', async ({ browser, browserName }) => {
-  test.skip(browserName === 'firefox', 'isMoble is not supported in firefox');
+  test.skip(browserName === 'firefox', 'isMobile is not supported in firefox');
 
   const context = await browser.newContext({
     ...iphone13,
