@@ -14,13 +14,14 @@ type ToastContainerProps = {
 
 const ToastContainer: FC<ToastContainerProps> = () => {
   const toasts = useToastStore((state) => state.toasts);
+  const dismissToast = useToastStore((state) => state.dismissToast);
 
   return toasts.map((toast) => (
     <LazyLoadFramerMotion key={toast.id}>
       <AnimatePresence>
         {toast.active && (
           <m.div
-            className="d-toast d-toast-end d-toast-bottom z-50"
+            className="d-toast d-toast-end d-toast-bottom z-50 cursor-pointer"
             initial={{
               opacity: 0,
               x: '100%',
@@ -36,6 +37,7 @@ const ToastContainer: FC<ToastContainerProps> = () => {
               x: '100%',
               scaleY: 0.33,
             }}
+            onClick={() => dismissToast(toast.id)}
           >
             <Toast toast={toast} />
           </m.div>
