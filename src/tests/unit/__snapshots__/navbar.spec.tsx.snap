@@ -181,6 +181,7 @@ exports[`should render mobile-navbar on screens smaller then 768px 1`] = `
           </div>
           <ul
             class="d-menu d-dropdown-content z-[1] mt-5 w-52 rounded-box bg-base-100 p-2 shadow"
+            data-pw-e2e="hamburger-menu-content"
             tabindex="0"
           >
             <li
