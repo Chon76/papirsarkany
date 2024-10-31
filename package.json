@@ -15,9 +15,7 @@
     "start": "next start",
     "test": "vitest run && playwright test",
     "test:unit": "vitest run",
-    "test:e2e": "playwright test",
-    "test:report": "playwright test && playwright show-report",
-    "test:ui": "playwright test --ui"
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

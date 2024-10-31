@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('Kite order', async ({ page, browserName, isMobile }) => {
+test('Kite order flow', async ({ page, browserName, isMobile }) => {
   await test.step('Add kites to the cart', async () => {
     await page.goto('/sarkanyok');
 
