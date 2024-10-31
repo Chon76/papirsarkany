@@ -12,7 +12,14 @@ const NavMenuItem: FC<MenuItemProps> = (props: MenuItemProps) => {
 
   return (
     <li className="text-sm lg:text-base">
-      <Link {...props} onClick={(e) => (e.target as HTMLElement).blur()}>
+      <Link
+        {...props}
+        onClick={(e) => {
+          if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
+        }}
+      >
         {children}
       </Link>
     </li>
