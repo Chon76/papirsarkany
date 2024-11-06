@@ -250,7 +250,7 @@ const CheckoutShippingForm: FC = () => {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="d-btn d-btn-primary uppercase d-btn-block sm:w-auto"
+            className="d-btn d-btn-primary d-btn-block uppercase sm:w-auto"
           >
             Tovább
           </button>

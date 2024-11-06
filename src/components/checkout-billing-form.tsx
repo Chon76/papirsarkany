@@ -176,17 +176,17 @@ const CheckoutBillingForm: FC = () => {
         </>
       )}
 
-      <div className="flex flex-col-reverse sm:flex-row sm:justify-between gap-4">
+      <div className="flex flex-col-reverse gap-4 sm:flex-row sm:justify-between">
         <button
           type="button"
-          className="d-btn d-btn-outline d-btn-neutral uppercase d-btn-block sm:w-auto"
+          className="d-btn d-btn-outline d-btn-neutral d-btn-block uppercase sm:w-auto"
           onClick={prevStep}
         >
           Vissza
         </button>
         <button
           type="submit"
-          className="d-btn d-btn-primary uppercase d-btn-block sm:w-auto"
+          className="d-btn d-btn-primary d-btn-block uppercase sm:w-auto"
           onClick={() => syncShippingAndBilling()}
         >
           Tovább

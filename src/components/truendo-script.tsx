@@ -5,7 +5,7 @@ import { isProdEnv } from '~/lib/helpers';
 
 /**
  * IMPORTANT: Import me only in the root layout.
- * 
+ *
  * Truendo is a Consent Management Platform.
  * A provider to meet the GDPR requirements, it injects a cookie banner.
  * @returns Truendo banner integration script if NODE_ENV and VERCEL_ENV is production

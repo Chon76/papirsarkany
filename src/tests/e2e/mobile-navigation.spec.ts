@@ -14,7 +14,7 @@ test('Mobile navigation', async ({ browser, browserName }) => {
 
   const hamburgerMenuIcon = page.getByLabel('mobile navigation menu');
   const hamburgerMenuContent = page.getByTestId('hamburger-menu-content');
-  
+
   await hamburgerMenuIcon.click();
 
   await hamburgerMenuContent.waitFor({ state: 'visible' });

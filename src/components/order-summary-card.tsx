@@ -43,8 +43,8 @@ const OrderSummaryCard: FC<OrderSummaryCardProps> = ({ layout = 'full' }) => {
       <Card className="flex flex-1 flex-col gap-4 p-8">
         {cart.map((item) => (
           <Fragment key={item._id}>
-            <div className="flex items-center justify-between flex-wrap gap-2">
-              <div className="flex gap-2 flex-shrink">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex flex-shrink gap-2">
                 <div className="hidden flex-shrink-0 min-[390px]:block">
                   {item.image && (
                     <Image
@@ -67,7 +67,7 @@ const OrderSummaryCard: FC<OrderSummaryCardProps> = ({ layout = 'full' }) => {
                   </span>
                 </div>
               </div>
-              <div className="flex items-center gap-4 flex-1 justify-end">
+              <div className="flex flex-1 items-center justify-end gap-4">
                 {item.price && (
                   <h3 className="font-bold">
                     {currencyFormatter(item.price * item.quantity)}

@@ -8,7 +8,7 @@ import {
   getFoxpostPackageSize,
   getTotalPackageInfo,
 } from '~/lib/foxpost';
-import { isStageEnv, isProdEnv, normalizeOrderForm } from '~/lib/helpers';
+import { isProdEnv, isStageEnv, normalizeOrderForm } from '~/lib/helpers';
 import { OrderMail, OrderRequestBody } from '~/lib/types';
 
 setSendgridApiKey();
