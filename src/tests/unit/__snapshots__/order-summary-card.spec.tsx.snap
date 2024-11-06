@@ -6,10 +6,10 @@ exports[`should render "definitive" layout when provided 1`] = `
     class="rounded-lg border-4 border-black bg-white flex flex-1 flex-col gap-4 p-8"
   >
     <div
-      class="flex items-center justify-between flex-wrap gap-2"
+      class="flex flex-wrap items-center justify-between gap-2"
     >
       <div
-        class="flex gap-2 flex-shrink"
+        class="flex flex-shrink gap-2"
       >
         <div
           class="hidden flex-shrink-0 min-[390px]:block"
@@ -42,7 +42,7 @@ exports[`should render "definitive" layout when provided 1`] = `
         </div>
       </div>
       <div
-        class="flex items-center gap-4 flex-1 justify-end"
+        class="flex flex-1 items-center justify-end gap-4"
       >
         <h3
           class="font-bold"
