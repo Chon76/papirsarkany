@@ -9,6 +9,7 @@
     "build:analyze": "ANALYZE=true pnpm run build",
     "dev": "next dev",
     "format": "prettier src --write",
+    "format:check": "prettier src --check",
     "lint": "next lint && tsc --noEmit",
     "sanity:publish": "pnpx tsx sanity/lib/actions/publish-all-modified.ts",
     "sanity:typegen": "rimraf ./sanity/schema.json && pnpx sanity schema extract --path sanity/schema.json && pnpx sanity typegen generate",
