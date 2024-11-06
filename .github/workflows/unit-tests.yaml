@@ -22,6 +22,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+
+      - name: Generate Prisma Client
+        run: pnpx prisma generate
+
       - name: Run linter
         run: pnpm run lint
 
