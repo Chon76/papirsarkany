@@ -473,12 +473,8 @@ export type ModifiedPublishedQueryResult = Array<
       diameters?: TwineDiameters;
     }
 >;
-import "@sanity/client";
-declare module "@sanity/client" {
-  interface SanityQueries {
-    "*[count(*[_id in [^._id, \"drafts.\" + ^._id]]) > 1]": ModifiedPublishedQueryResult;
-  }
-}// Source: ./src/lib/queries.ts
+
+// Source: ./src/lib/queries.ts
 // Variable: getAllKitesQuery
 // Query: *[_type == 'kite'] { ..., image { asset -> { url, metadata } } } | order(price asc)
 export type GetAllKitesQueryResult = Array<{
@@ -612,9 +608,12 @@ export type GetAllTwinesQueryResult = Array<{
   };
   diameters?: TwineDiameters;
 }>;
-import "@sanity/client";
-declare module "@sanity/client" {
+
+// Query TypeMap
+import '@sanity/client';
+declare module '@sanity/client' {
   interface SanityQueries {
+    '*[count(*[_id in [^._id, "drafts." + ^._id]]) > 1]': ModifiedPublishedQueryResult;
     "*[_type == 'kite'] { ..., image { asset -> { url, metadata } } } | order(price asc)": GetAllKitesQueryResult;
     "*[_type == 'kite' && slug.current == $slug] { ..., image { asset-> { url, metadata } } }[0]": GetKiteBySlugQueryResult;
     "*[_type == 'rod'] { ..., image { asset-> { url, metadata } } } | order(name asc)": GetAllRodsQueryResult;
