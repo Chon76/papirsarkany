@@ -23,7 +23,7 @@
     "@hookform/resolvers": "^3.9.1",
     "@prisma/client": "^5.22.0",
     "@sanity/client": "^6.22.5",
-    "@sanity/locale-hu-hu": "^1.1.14",
+    "@sanity/locale-hu-hu": "^1.1.16",
     "@sanity/vision": "^3.64.2",
     "@sendgrid/mail": "^8.1.4",
     "@svgr/webpack": "^8.1.0",
