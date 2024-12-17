@@ -34,7 +34,7 @@
     "autoprefixer": "10.4.20",
     "client-only": "^0.0.1",
     "daisyui": "^4.12.14",
-    "framer-motion": "^11.11.11",
+    "framer-motion": "^11.15.0",
     "groq": "^3.64.2",
     "just-pick": "^4.2.0",
     "next-plugin-preval": "^1.2.6",
