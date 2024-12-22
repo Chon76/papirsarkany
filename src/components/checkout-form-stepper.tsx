@@ -5,12 +5,10 @@ import { redirect, useRouter } from 'next/navigation';
 import { Children, FC, ReactNode } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import useCart from '~/hooks/use-cart';
-import { OrderRequestBody } from '~/lib/types';
+import { useOrder } from '~/hooks/use-order';
 import { OrderForm, orderFormSchema } from '~/lib/validation-schemas';
 import { useCartStore } from '~/store/use-cart-store';
 import { useCheckoutFormStore } from '~/store/use-checkout-form-store';
-import { useFoxpostParcelBoxStore } from '~/store/use-foxpost-parcel-box-store';
 import StepProgress from './step-progress';
 
 type CheckoutStepperProps = {
@@ -24,17 +22,13 @@ const CheckoutFormStepper: FC<CheckoutStepperProps> = ({ children }) => {
   const cart = useCartStore((state) => state.cart);
   const resetCart = useCartStore((state) => state.resetCart);
 
-  const { getTotalPrice } = useCart();
-
   const step = useCheckoutFormStore((state) => state.step);
   const nextStep = useCheckoutFormStore((state) => state.nextStep);
   const formValues = useCheckoutFormStore((state) => state.formValues);
   const setFormValues = useCheckoutFormStore((state) => state.setFormValues);
   const resetForm = useCheckoutFormStore((state) => state.resetForm);
 
-  const foxpostOperatorId = useFoxpostParcelBoxStore(
-    (state) => state.destination,
-  );
+  const { sendOrder } = useOrder();
 
   const isLast = step === Children.count(children) - 1;
 
@@ -52,15 +46,15 @@ const CheckoutFormStepper: FC<CheckoutStepperProps> = ({ children }) => {
   } = formMethods;
 
   const onSubmit = async (data: OrderForm) => {
+    if (isSubmitting) {
+      return;
+    }
+
     setFormValues(data);
 
     if (!isLast) {
       nextStep();
       window.scrollTo(0, 0);
-      return;
-    }
-
-    if (isSubmitting) {
       return;
     }
 
@@ -86,24 +80,6 @@ const CheckoutFormStepper: FC<CheckoutStepperProps> = ({ children }) => {
       resetForm();
       reset();
       resolve();
-    });
-  };
-
-  const sendOrder = (formData: OrderForm) => {
-    const totalPrice = getTotalPrice();
-
-    return fetch('/api/order', {
-      method: 'POST',
-      body: JSON.stringify({
-        formData,
-        cart,
-        totalPrice,
-        foxpostOperatorId,
-      } satisfies OrderRequestBody),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
     });
   };
 
