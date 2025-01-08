@@ -4,7 +4,7 @@ import { vi } from 'vitest';
 type MockMatchMedia = {
   media: string;
   matches?: boolean;
-}
+};
 
 function getMockImplementation({ media, matches = false }: MockMatchMedia) {
   const mql: MediaQueryList = {
