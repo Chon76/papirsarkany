@@ -8,7 +8,7 @@ import { NavbarItems } from '~/lib/types';
 import DesktopNavbar from './desktop-navbar';
 import MobileNavbar from './mobile-navbar';
 
-export const navbarItems: NavbarItems = {
+const navbarItems: NavbarItems = {
   leftItems: [
     {
       children: 'A vállalkozásról',

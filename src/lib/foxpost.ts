@@ -1,6 +1,5 @@
 import {
   FOXPOST_PACKAGE_CONSTRAINST,
-  FOXPOST_PACKAGE_HANDLING_FEES,
   FOXPOST_PACKAGE_MAX_LIMIT,
 } from './constants';
 import { env } from './env';
@@ -10,7 +9,7 @@ import {
   FoxpostPackageSize,
   PackageInfo,
 } from './types';
-import { CartItem, OrderForm } from './validation-schemas';
+import { CartItem } from './validation-schemas';
 
 export function createParcel(body: FoxpostCreateParcelRequestBody) {
   const {
@@ -32,12 +31,6 @@ export function createParcel(body: FoxpostCreateParcelRequestBody) {
     headers: foxpostHeaders,
     body: JSON.stringify([body]),
   });
-}
-
-export function getCOD(normalizedFormData: OrderForm, totalPrice: number) {
-  return normalizedFormData.paymentOption === 'Átvételkor bankártyával'
-    ? totalPrice
-    : 0;
 }
 
 export function isFitInMaxLimit(packageInfo: PackageInfo): boolean {
@@ -82,16 +75,4 @@ export function getTotalPackageInfo(cart: CartItem[]): PackageInfo {
     },
     { x: 0, y: 0, z: 0, weight: 0 },
   );
-}
-
-export function getHandlingFee(amount: number) {
-  const feeInfo = FOXPOST_PACKAGE_HANDLING_FEES.find(
-    (fee) => amount >= fee.priceRange[0] && amount <= fee.priceRange[1],
-  );
-  if (feeInfo) {
-    return feeInfo.feeType === 'flat'
-      ? feeInfo.fee
-      : (feeInfo.fee / 100) * amount;
-  }
-  return null;
 }
