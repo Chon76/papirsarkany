@@ -18,7 +18,8 @@ export async function generateStaticParams(): Promise<Partial<Params>[]> {
   }));
 }
 
-export default async function Kite({ params }: { params: Params }) {
+export default async function Kite(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const kite = await getKiteBySlug(params.slug);
 
   if (!kite) {
