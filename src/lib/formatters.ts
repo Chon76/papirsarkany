@@ -64,6 +64,10 @@ export function formatPhoneNumber(phoneNumber: string) {
   return formatted;
 }
 
+export const getRawPhoneNumber = (phoneNumber: string) => {
+  return phoneNumber.replaceAll(' ', '');
+};  
+
 export const sanityProductCategoryTitleMap: Record<ProductTypes, string> = {
   kite: 'Egyzsinóros sárkány',
   reel: 'Zsinórtartók',

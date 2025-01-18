@@ -9,12 +9,13 @@ import {
   FOXPOST_SHIPPING_FEE,
   LOCAL_PICKUP_ADDRESS,
 } from '~/lib/constants';
+import { getRawPhoneNumber } from '~/lib/formatters';
 import { getTotalPackageInfo, isFitInMaxLimit } from '~/lib/foxpost';
 import { OrderForm } from '~/lib/validation-schemas';
 import { useCartStore } from '~/store/use-cart-store';
 import FoxpostMap from './foxpost-map';
 import LazyLoadFramerMotion from './lazy-load-framer-motion';
-import PhoneNumberInput from './phone-number-input';
+import FormattedPhoneNumberInput from './formatted-phone-number-input';
 import ShippingOptionRadioInput from './shipping-option-radio-input';
 
 const CheckoutShippingForm: FC = () => {
@@ -121,7 +122,11 @@ const CheckoutShippingForm: FC = () => {
             <label className="d-label">
               <span className="d-label-text text-lg">Telefonszám</span>
             </label>
-            <PhoneNumberInput {...register('phoneNumber')} />
+            <FormattedPhoneNumberInput
+              {...register('phoneNumber', {
+                setValueAs: (value: string) => getRawPhoneNumber(value),
+              })}
+            />
             <label className="d-label">
               <span className="d-label-text-alt text-error">
                 {errors.phoneNumber?.message}

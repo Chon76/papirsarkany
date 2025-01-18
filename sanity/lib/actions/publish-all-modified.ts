@@ -14,7 +14,7 @@ const client = createClient({
   apiVersion,
 });
 
-// TODO make sure to trigger a single webhook
+// REFACTOR make sure to trigger a single webhook
 // USE CAREFULLY !!! EACH PUBLISH TRIGGERS THE REBUILD WEBHOOK
 async function main() {
   const modifiedPublishedQuery = defineQuery(

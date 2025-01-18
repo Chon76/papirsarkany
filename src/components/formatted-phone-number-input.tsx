@@ -1,35 +1,29 @@
 'use client';
 
-import { FC, useRef, useState } from 'react';
+import { FC, useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
-import { formatPhoneNumber } from '~/lib/formatters';
+import { formatPhoneNumber, getRawPhoneNumber } from '~/lib/formatters';
 
 type PhoneNumberInputProps = UseFormRegisterReturn;
 
-const PhoneNumberInput: FC<PhoneNumberInputProps> = ({ ...register }) => {
+const FormattedPhoneNumberInput: FC<PhoneNumberInputProps> = ({
+  ...register
+}) => {
   const [phoneNumber, setPhoneNumber] = useState('');
-  const rawPhoneNumber = useRef('');
-
-  const getRawPhoneNumber = (phoneNumber: string) => {
-    return phoneNumber.replaceAll(' ', '');
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    rawPhoneNumber.current = getRawPhoneNumber(e.target.value);
-    if (rawPhoneNumber.current.length > 12) {
+    const rawPhoneNumber = getRawPhoneNumber(e.target.value);
+    if (rawPhoneNumber.length > 12) {
       return;
     }
-
     const formatted = formatPhoneNumber(e.target.value);
     setPhoneNumber(formatted);
 
-    e.target.value = rawPhoneNumber.current;
     register.onChange(e);
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    e.target.value = rawPhoneNumber.current;
     register.onBlur(e);
   };
 
@@ -47,6 +41,4 @@ const PhoneNumberInput: FC<PhoneNumberInputProps> = ({ ...register }) => {
   );
 };
 
-PhoneNumberInput.displayName = 'PhoneNumberInput';
-
-export default PhoneNumberInput;
+export default FormattedPhoneNumberInput;
