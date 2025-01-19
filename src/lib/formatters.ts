@@ -66,7 +66,7 @@ export function formatPhoneNumber(phoneNumber: string) {
 
 export const parsePhoneNumber = (phoneNumber: string) => {
   return phoneNumber.replaceAll(' ', '');
-};  
+};
 
 export const sanityProductCategoryTitleMap: Record<ProductTypes, string> = {
   kite: 'Egyzsinóros sárkány',

@@ -13,9 +13,9 @@ import { parsePhoneNumber } from '~/lib/formatters';
 import { getTotalPackageInfo, isFitInMaxLimit } from '~/lib/foxpost';
 import { OrderForm } from '~/lib/validation-schemas';
 import { useCartStore } from '~/store/use-cart-store';
+import FormattedPhoneNumberInput from './formatted-phone-number-input';
 import FoxpostMap from './foxpost-map';
 import LazyLoadFramerMotion from './lazy-load-framer-motion';
-import FormattedPhoneNumberInput from './formatted-phone-number-input';
 import ShippingOptionRadioInput from './shipping-option-radio-input';
 
 const CheckoutShippingForm: FC = () => {
