@@ -3,7 +3,7 @@
 import { FC, useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
-import { formatPhoneNumber, getRawPhoneNumber } from '~/lib/formatters';
+import { formatPhoneNumber, parsePhoneNumber } from '~/lib/formatters';
 
 type PhoneNumberInputProps = UseFormRegisterReturn;
 
@@ -13,7 +13,7 @@ const FormattedPhoneNumberInput: FC<PhoneNumberInputProps> = ({
   const [phoneNumber, setPhoneNumber] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const rawPhoneNumber = getRawPhoneNumber(e.target.value);
+    const rawPhoneNumber = parsePhoneNumber(e.target.value);
     if (rawPhoneNumber.length > 12) {
       return;
     }

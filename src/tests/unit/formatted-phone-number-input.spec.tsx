@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import { afterEach, test } from 'vitest';
 
 import FormattedPhoneNumberInput from '~/components/formatted-phone-number-input';
-import { getRawPhoneNumber } from '~/lib/formatters';
+import { parsePhoneNumber } from '~/lib/formatters';
 
 afterEach(cleanup);
 
@@ -41,7 +41,7 @@ test('should regsiter raw phone number (without any formatting)', () => {
   render(
     <FormattedPhoneNumberInput
       {...register('phoneNumber', {
-        setValueAs: (value: string) => getRawPhoneNumber(value),
+        setValueAs: parsePhoneNumber,
       })}
     />,
   );

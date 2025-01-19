@@ -64,7 +64,7 @@ export function formatPhoneNumber(phoneNumber: string) {
   return formatted;
 }
 
-export const getRawPhoneNumber = (phoneNumber: string) => {
+export const parsePhoneNumber = (phoneNumber: string) => {
   return phoneNumber.replaceAll(' ', '');
 };  
 
