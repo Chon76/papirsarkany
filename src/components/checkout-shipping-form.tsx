@@ -36,6 +36,10 @@ const CheckoutShippingForm: FC = () => {
   const isFitInFoxpostLimit = isFitInMaxLimit(totalPackageSize);
 
   const onPersonalPickupOptionClick = () => {
+    if (getValues('shippingOption') === 'Személyes átvétel') {
+      return;
+    }
+
     setValue('shippingPostcode', LOCAL_PICKUP_ADDRESS.shippingPostcode);
     setValue('shippingCity', LOCAL_PICKUP_ADDRESS.shippingCity);
     setValue('shippingAddress', LOCAL_PICKUP_ADDRESS.shippingAddress);
@@ -44,25 +48,25 @@ const CheckoutShippingForm: FC = () => {
   };
 
   const onFoxpostOptionClick = () => {
-    const { shippingOption } = getValues();
-
-    if (shippingOption !== 'Foxpost automatába') {
-      setValue('shippingPostcode', '');
-      setValue('shippingCity', '');
-      setValue('shippingAddress', '');
+    if (getValues('shippingOption') === 'Foxpost automatába') {
+      return;
     }
+
+    setValue('shippingPostcode', '');
+    setValue('shippingCity', '');
+    setValue('shippingAddress', '');
 
     setIsShowFoxpostMap(true);
   };
 
   const onPostOptionClick = () => {
-    const { shippingOption } = getValues();
-
-    if (shippingOption !== 'Postai szállítás') {
-      setValue('shippingPostcode', '');
-      setValue('shippingCity', '');
-      setValue('shippingAddress', '');
+    if (getValues('shippingOption') === 'Postai szállítás') {
+      return;
     }
+
+    setValue('shippingPostcode', '');
+    setValue('shippingCity', '');
+    setValue('shippingAddress', '');
   };
 
   return (
